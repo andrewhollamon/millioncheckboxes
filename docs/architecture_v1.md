@@ -41,26 +41,27 @@ CHECKBOX_T
 - INDEXES
   - PK: CHECKBOX_NBR
 
-CHECKBOX_HIST_T
+CHECKBOX_DETAILS_T
 - CHECKBOX_NBR int, unique, not null, primary key
 - INIT_DATE timestamp with time zone, not null, default now()
-- CHECKED_BY uuid, not null, (UUIDv7)
-- REQUEST_ID uuid, not null, (UUIDv7)
-- CHECKED_DATE timestamp with time zone, not null
+- LAST_UPDATED_BY uuid, not null, (UUIDv7)
+- LAST_REQUEST_ID uuid, not null, (UUIDv7)
+- LAST_UPDATED_DATE timestamp with time zone, not null
 - INDEXES
   - PK: CHECKBOX_NBR
-  - IX1: CHECKED_BY
-  - IX2: REQUEST_ID
+  - IX1: LAST_UPDATED_BY
 
 UPDATE_T
 - UPDATE_DATE timestamp with time zone, not null, default now(), primary key
 - CHECKBOX_NBR int, not null
-- CHECKED_BY uuid, not null, (UUIDv7)
+- CHECKED boolean, not null
+- UPDATED_BY uuid, not null, (UUIDv7)
 - REQUEST_ID uuid, not null, (UUIDv7)
 - SUCCESS boolean, not null
 - INDEXES
   - PK: UPDATE_DATE
   - IX1: CHECKBOX_NBR
+  - IX2: UPDATED_BY
 
 LOG_T
 - LOG_DATE timestamp with time zone, not null, default now()
