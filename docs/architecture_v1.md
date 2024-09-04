@@ -9,12 +9,18 @@ API Layer: Go-based API using in-memory queue:
 - Create Frontend Instance
     - IN: IP Address, Browser String
     - OUT: Client UUID
+    - POST /api/v1/client/new
+    - VERY strong rate limiting, mostly IP based
 - Request Checkbox
     - IN: Client UUID, Checkbox Number
     - OUT: Request UUID
+    - POST /api/v1/checkbox/{checkbox_nbr}/check
+    - POST /api/v1/checkbox/{checkbox_nbr}/uncheck
+    - Check queue status .... if not being drained
 - Request Status
     - IN: Request UUID
     - OUT: Result (Success, Failure)
+    - GET /api/v1/status/{request_uuid}
 
 Partitioning Service: Go-based internal server to handle partitioning based on checkbox number, can be reconfigured with more/less partitions
 
